@@ -151,10 +151,15 @@
     const panels = document.querySelectorAll('.panel');
     console.log(panels);
 
-    function toggleOpen() {
+    function panelOpen() {
       const index = this.dataset.index;
-      panels[index].classList.toggle('open');
+      panels[index].classList.add('open');
       // console.log(this.dataset);
+    }
+
+    function panelClose() {
+      const index = this.dataset.index;
+      panels[index].classList.remove('open');
     }
 
     function toggleActive(e) {
@@ -163,7 +168,8 @@
       }
     }
 
-    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('mouseenter', panelOpen));
+    panels.forEach(panel => panel.addEventListener('mouseleave', panelClose));
     panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
   </script>
 
